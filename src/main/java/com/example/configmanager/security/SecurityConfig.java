@@ -34,10 +34,12 @@ public class SecurityConfig {
 
                     .anyRequest()
 
-                    .authenticated()
+                    .permitAll()
             )
 
-            .httpBasic();
+            .formLogin(form -> form.disable())
+
+            .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }
